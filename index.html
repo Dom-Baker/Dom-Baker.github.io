@@ -1,0 +1,426 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Dominic Baker</title>
+<meta name="description" content="Dominic Baker is a software engineer building the national NHS search that helps 111 and 999 find the right service for a patient, and the founder of Big Code Builder.">
+<meta property="og:title" content="Dominic Baker">
+<meta property="og:description" content="Software engineer on the national NHS service search. Founder of The Big Code Company and Big Code Builder.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230E1A1F'/%3E%3Ccircle cx='16' cy='16' r='4' fill='%23E0306F'/%3E%3Ccircle cx='16' cy='16' r='10' fill='none' stroke='%23E0306F' stroke-width='1.5' opacity='.6'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Atkinson+Hyperlegible+Next:wght@400;500;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: cartographic. Asymmetric hero with a live "find the right service" map; the rest reads like a survey sheet with a left label rail. */
+:root {
+  --paper: #EDF1EE;
+  --sheet: #F7F9F7;
+  --ink: #0E1A1F;
+  --ink-2: #44545A;
+  --rule: #C9D3CF;
+  --route: #D0245F;
+  --route-soft: rgba(208, 36, 95, .12);
+  --contour: #8E9C7A;
+  --water: #6F97A8;
+  --f-display: "Archivo", "Arial Narrow", system-ui, sans-serif;
+  --f-body: "Atkinson Hyperlegible Next", "Atkinson Hyperlegible", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --f-mono: "JetBrains Mono", ui-monospace, Menlo, Consolas, monospace;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --paper: #0A1215; --sheet: #0F191D; --ink: #E3ECE8; --ink-2: #93A5A0; --rule: #23343A;
+  --route: #FF4F8B; --route-soft: rgba(255, 79, 139, .14); --contour: #4F6152; --water: #3F6878;
+  color-scheme: dark } }
+:root[data-theme="dark"] {
+  --paper: #0A1215; --sheet: #0F191D; --ink: #E3ECE8; --ink-2: #93A5A0; --rule: #23343A;
+  --route: #FF4F8B; --route-soft: rgba(255, 79, 139, .14); --contour: #4F6152; --water: #3F6878;
+  color-scheme: dark }
+
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 17px/1.6 var(--f-body); }
+a { color: inherit; }
+img { max-width: 100%; }
+:focus-visible { outline: 2px solid var(--route); outline-offset: 3px; border-radius: 2px; }
+
+.wrap { max-width: 1180px; margin: 0 auto; padding-left: max(20px, env(safe-area-inset-left, 0px)); padding-right: max(20px, env(safe-area-inset-right, 0px)); }
+.mono { font-family: var(--f-mono); font-size: .78rem; letter-spacing: .04em; }
+.eyebrow { font-family: var(--f-mono); font-size: .74rem; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-2); }
+
+/* top bar */
+.bar { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding-block: 22px; }
+.bar .mark { display: flex; align-items: center; gap: 10px; font-family: var(--f-display); font-weight: 700; font-stretch: 100%; letter-spacing: .02em; text-decoration: none; }
+.bar .mark i { width: 10px; height: 10px; border-radius: 50%; background: var(--route); box-shadow: 0 0 0 4px var(--route-soft); }
+.bar nav { display: flex; gap: 22px; align-items: center; }
+.bar nav a { text-decoration: none; font-size: .92rem; color: var(--ink-2); }
+.bar nav a:hover { color: var(--ink); }
+.theme { font: inherit; font-size: .8rem; background: none; border: 1px solid var(--rule); color: var(--ink-2); border-radius: 99px; padding: 5px 12px; cursor: pointer; }
+
+/* hero */
+.hero { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); gap: 48px; align-items: center; padding-block: 28px 72px; }
+.hero h1 { font-family: var(--f-display); font-weight: 800; font-stretch: 118%; font-size: clamp(3.2rem, 8.4vw, 7.2rem); line-height: .9; letter-spacing: -.02em; margin: 14px 0 26px; text-wrap: balance; }
+.hero h1 span { display: block; font-stretch: 72%; font-weight: 500; color: var(--ink-2); font-size: .42em; letter-spacing: .01em; line-height: 1.1; margin-top: 14px; }
+.lede { font-size: clamp(1.08rem, 1.6vw, 1.28rem); max-width: 34ch; margin: 0 0 30px; }
+.lede b { font-weight: 700; background: linear-gradient(transparent 62%, var(--route-soft) 62%); }
+.ctas { display: flex; flex-wrap: wrap; gap: 12px; }
+.btn { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; font-weight: 700; font-size: .95rem; padding: 12px 18px; border-radius: 10px; border: 1.5px solid var(--ink); }
+.btn.solid { background: var(--ink); color: var(--paper); }
+.btn:hover { transform: translateY(-1px); }
+.btn .arr { font-family: var(--f-mono); }
+
+.map { position: relative; border-radius: 18px; overflow: hidden; background: var(--sheet); border: 1px solid var(--rule); aspect-ratio: 1 / 1; max-width: 100%; }
+.map canvas { display: block; width: 100%; height: 100%; }
+.map .legend { position: absolute; left: 14px; right: 14px; bottom: 12px; display: flex; justify-content: space-between; gap: 10px; flex-wrap: wrap; color: var(--ink-2); pointer-events: none; }
+.map .legend b { color: var(--route); font-weight: 500; }
+.map .title { position: absolute; left: 14px; top: 12px; color: var(--ink-2); pointer-events: none; }
+
+/* sections */
+section.block { border-top: 1px solid var(--rule); padding-block: 64px; display: grid; grid-template-columns: 220px minmax(0, 1fr); gap: 32px; }
+section.block > header { position: relative; }
+section.block > header .eyebrow { position: sticky; top: 24px; display: block; }
+h2 { font-family: var(--f-display); font-weight: 700; font-stretch: 110%; font-size: clamp(1.8rem, 3.6vw, 2.8rem); line-height: 1.05; letter-spacing: -.01em; margin: 0 0 18px; text-wrap: balance; }
+h3 { font-family: var(--f-display); font-weight: 700; font-stretch: 100%; font-size: 1.25rem; margin: 0; line-height: 1.2; }
+.prose { max-width: 62ch; }
+.prose p { margin: 0 0 14px; }
+
+/* now */
+.now { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; margin-top: 8px; }
+.card { background: var(--sheet); border: 1px solid var(--rule); border-radius: 16px; padding: 26px; display: grid; gap: 12px; align-content: start; }
+.card .top { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; flex-wrap: wrap; }
+.card p { margin: 0; color: var(--ink-2); }
+.card ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 6px; }
+.card li { display: grid; grid-template-columns: 14px minmax(0, 1fr); gap: 8px; font-size: .95rem; }
+.card li::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--route); margin-top: .62em; }
+.tag { font-family: var(--f-mono); font-size: .7rem; letter-spacing: .08em; text-transform: uppercase; padding: 3px 9px; border-radius: 99px; border: 1px solid var(--rule); color: var(--ink-2); white-space: nowrap; }
+.tag.live { border-color: var(--route); color: var(--route); }
+.plans { display: flex; gap: 8px; flex-wrap: wrap; }
+.plans span { font-family: var(--f-mono); font-size: .78rem; background: var(--paper); border: 1px solid var(--rule); border-radius: 8px; padding: 4px 9px; }
+.card a.more { font-weight: 700; text-decoration-color: var(--route); text-underline-offset: 4px; }
+
+/* work log */
+.log { list-style: none; margin: 0; padding: 0; display: grid; }
+.log li { display: grid; grid-template-columns: 180px minmax(0, 1fr); gap: 24px; padding: 22px 0; border-bottom: 1px dashed var(--rule); }
+.log li:first-child { padding-top: 4px; }
+.log .figure { font-family: var(--f-display); font-weight: 800; font-stretch: 125%; font-size: 1.5rem; line-height: 1.05; color: var(--route); }
+.log .figure small { display: block; font-family: var(--f-mono); font-weight: 400; font-size: .7rem; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-2); margin-top: 6px; font-stretch: 100%; }
+.log p { margin: 6px 0 0; color: var(--ink-2); max-width: 60ch; }
+
+/* stack */
+.stack { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 26px 32px; }
+.stack div { display: grid; gap: 8px; align-content: start; }
+.stack ul { margin: 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: 6px; }
+.stack li { font-family: var(--f-mono); font-size: .8rem; padding: 4px 9px; border: 1px solid var(--rule); border-radius: 7px; background: var(--sheet); }
+
+/* path */
+.path { list-style: none; margin: 0; padding: 0 0 0 22px; border-left: 2px solid var(--rule); display: grid; gap: 22px; }
+.path li { position: relative; }
+.path li::before { content: ""; position: absolute; left: -29px; top: .45em; width: 12px; height: 12px; border-radius: 50%; background: var(--paper); border: 2px solid var(--route); }
+.path .when { font-family: var(--f-mono); font-size: .76rem; color: var(--ink-2); letter-spacing: .04em; }
+.path p { margin: 2px 0 0; color: var(--ink-2); }
+
+/* contact */
+.contact { padding-block: 80px 40px; border-top: 1px solid var(--rule); }
+.contact h2 { font-size: clamp(2.2rem, 6vw, 4.6rem); font-stretch: 120%; font-weight: 800; max-width: 14ch; }
+.contact .mail { display: inline-block; font-family: var(--f-display); font-stretch: 90%; font-weight: 600; font-size: clamp(1.15rem, 3vw, 1.9rem); text-decoration: none; border-bottom: 3px solid var(--route); padding-bottom: 2px; margin: 8px 0 30px; overflow-wrap: anywhere; }
+.links { display: flex; gap: 12px 28px; flex-wrap: wrap; }
+.links a { text-decoration: none; font-weight: 700; }
+.links a span { color: var(--route); font-family: var(--f-mono); }
+footer { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; padding-block: 28px 40px; color: var(--ink-2); }
+
+@media (max-width: 900px) {
+  .hero { grid-template-columns: minmax(0, 1fr); gap: 32px; padding-bottom: 56px; }
+  .map { aspect-ratio: 4 / 3.4; }
+  section.block { grid-template-columns: minmax(0, 1fr); gap: 14px; padding-block: 48px; }
+  .now, .stack { grid-template-columns: minmax(0, 1fr); }
+  .log li { grid-template-columns: minmax(0, 1fr); gap: 8px; }
+  .bar nav a.hide-sm { display: none; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .btn { transition: transform .15s ease; }
+  .reveal { animation: rise .7s cubic-bezier(.2, .7, .2, 1) both; }
+  .reveal.d2 { animation-delay: .08s; } .reveal.d3 { animation-delay: .16s; } .reveal.d4 { animation-delay: .24s; }
+  @keyframes rise { from { transform: translateY(14px); opacity: .001; } to { transform: none; opacity: 1; } }
+}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header class="bar">
+    <a class="mark" href="#top" id="top"><i aria-hidden="true"></i>Dominic Baker</a>
+    <nav aria-label="Sections">
+      <a href="#now" class="hide-sm">Now</a>
+      <a href="#work" class="hide-sm">Work</a>
+      <a href="#contact">Contact</a>
+      <button class="theme" id="theme" type="button" aria-label="Switch colour theme">Theme</button>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div>
+        <p class="eyebrow reveal">54.84°N 1.34°W · Seaham, County Durham</p>
+        <h1 class="reveal d2">Dominic Baker<span>Software engineer &amp; founder</span></h1>
+        <p class="lede reveal d3">I build the search that helps <b>NHS 111 and 999 find the right service</b> for a patient, and products that get small businesses online in minutes.</p>
+        <div class="ctas reveal d4">
+          <a class="btn solid" href="#work">See the work <span class="arr" aria-hidden="true">↓</span></a>
+          <a class="btn" href="https://bigcodebuilder.co.uk" target="_blank" rel="noopener">Big Code Builder <span class="arr" aria-hidden="true">↗</span></a>
+        </div>
+      </div>
+      <figure class="map reveal d3" aria-label="Animated map: a search pulse spreads from a patient's location and routes are drawn to the five closest services, in ranked order." style="margin:0">
+        <canvas id="map"></canvas>
+        <span class="title mono">search_by_triage_code · demo</span>
+        <div class="legend mono"><span>● patient</span><span><b>━</b> ranked route</span><span id="readout">0 of 5 returned</span></div>
+      </figure>
+    </section>
+
+    <section class="block" id="now">
+      <header><span class="eyebrow">Now</span></header>
+      <div>
+        <h2>Two things I'm building</h2>
+        <div class="now">
+          <article class="card">
+            <div class="top"><h3>Find the Right Service</h3><span class="tag">NHS England · since 2019</span></div>
+            <p>The national platform NHS 111, 999 and other referral systems use to choose a clinical service for each patient.</p>
+            <ul>
+              <li>Serverless search on AWS: API Gateway with mutual TLS, Lambda, OpenSearch and DynamoDB</li>
+              <li>Road-distance ordering, commissioning-area ranking and an emergency catch-all</li>
+              <li>I own two major product areas, from spec to production, and sit on the on-call rota</li>
+            </ul>
+          </article>
+          <article class="card">
+            <div class="top"><h3>Big Code Builder</h3><span class="tag live">Live · first customers</span></div>
+            <p>A website builder for salons, trades and local shops. Describe your business and Claude Opus 5.5 generates the starter site: pages, structure and copy.</p>
+            <ul>
+              <li>Generated content is validated against the builder's own section types, so a bad response can't break a site</li>
+              <li>Built in TypeScript with Next.js, deployed on Vercel</li>
+              <li>Enquiry inbox, reviews and one-click publishing, with booking next</li>
+            </ul>
+            <div class="plans" aria-label="Plans"><span>Starter £15/mo</span><span>Business £30/mo</span><span>Done with you £45/mo</span></div>
+            <a class="more" href="https://bigcodebuilder.co.uk" target="_blank" rel="noopener">bigcodebuilder.co.uk ↗</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="block" id="work">
+      <header><span class="eyebrow">Selected work</span></header>
+      <div>
+        <h2>Things I've shipped</h2>
+        <ol class="log">
+          <li><div class="figure">0 min<small>downtime</small></div>
+            <div><h3>Moved a live national service to Aurora PostgreSQL</h3>
+            <p>Infrastructure as code, AWS DMS replication, a tested rollback path and a controlled DNS cutover of production traffic.</p></div></li>
+          <li><div class="figure">Spec-first<small>team AI standard</small></div>
+            <div><h3>Led how my team builds with AI</h3>
+            <p>Wrote the spec-driven development method the team follows: specify, clarify, plan, implement, review, with checks every AI-generated plan must pass before any code is written.</p></div></li>
+          <li><div class="figure">3 stages<small>highest value first</small></div>
+            <div><h3>Search ranking, delivered in stages</h3>
+            <p>Split a large ranking change into independently shippable stages: limit filtering, then service-type ranking, then road distance with a crow-flies fallback.</p></div></li>
+          <li><div class="figure">1 design<small>used programme-wide</small></div>
+            <div><h3>Monitoring and alerting reference design</h3>
+            <p>Structured logs into Splunk with saved searches and dashboards, CloudWatch alerting and X-Ray tracing. Now reused across the wider programme.</p></div></li>
+          <li><div class="figure">100+<small>pages written</small></div>
+            <div><h3>Documentation people actually use</h3>
+            <p>Runbooks, API contracts, methodology guides and the support arrangements for a public API.</p></div></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="block">
+      <header><span class="eyebrow">Toolkit</span></header>
+      <div>
+        <h2>What I work with</h2>
+        <div class="stack">
+          <div><span class="eyebrow">Languages</span><ul><li>TypeScript</li><li>React</li><li>Next.js</li><li>Node.js</li><li>Python</li></ul></div>
+          <div><span class="eyebrow">Data</span><ul><li>PostgreSQL</li><li>Aurora</li><li>DynamoDB</li><li>OpenSearch</li><li>Redis</li></ul></div>
+          <div><span class="eyebrow">Cloud</span><ul><li>AWS Lambda</li><li>API Gateway</li><li>Terraform</li><li>Kubernetes</li><li>Vercel</li></ul></div>
+          <div><span class="eyebrow">AI</span><ul><li>Claude API</li><li>Claude Code</li><li>Spec-driven development</li></ul></div>
+          <div><span class="eyebrow">APIs</span><ul><li>REST</li><li>OpenAPI 3</li><li>FHIR</li><li>mTLS</li></ul></div>
+          <div><span class="eyebrow">Operations</span><ul><li>Splunk</li><li>CloudWatch</li><li>X-Ray</li><li>JMeter</li><li>On-call</li></ul></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="block">
+      <header><span class="eyebrow">Route so far</span></header>
+      <div>
+        <h2>How I got here</h2>
+        <ol class="path">
+          <li><span class="when">2026 →</span><h3>Founded The Big Code Company</h3><p>Websites, booking platforms and Big Code Builder for small businesses.</p></li>
+          <li><span class="when">2023</span><h3>Graduated with a 2:1</h3><p>Digital &amp; Technology Solutions degree apprenticeship, University of Roehampton.</p></li>
+          <li><span class="when">Sept 2019 →</span><h3>Joined NHS England as a degree apprentice</h3><p>From the original relational platform to the cloud-native search service it runs on today.</p></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="contact" id="contact">
+      <p class="eyebrow">Contact</p>
+      <h2>Got a problem that needs shipping?</h2>
+      <a class="mail" href="https://www.linkedin.com/in/dominic-baker-998545306/" target="_blank" rel="noopener">Message me on LinkedIn ↗</a>
+      <div class="links">
+        <a href="https://github.com/Dom-Baker" target="_blank" rel="noopener">GitHub <span>↗</span></a>
+        <a href="https://thebigcodecompany.co.uk" target="_blank" rel="noopener">The Big Code Company <span>↗</span></a>
+        <a href="https://bigcodebuilder.co.uk" target="_blank" rel="noopener">Big Code Builder <span>↗</span></a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="mono"><span>© 2026 Dominic Baker</span><span>Hand-built, hosted on GitHub Pages</span></footer>
+</div>
+
+<script>
+(() => {
+  // Theme toggle: system by default, remembered per browser.
+  const root = document.documentElement, btn = document.getElementById("theme");
+  try { const t = localStorage.getItem("theme"); if (t) root.dataset.theme = t; } catch (_) {}
+  const isDark = () => root.dataset.theme ? root.dataset.theme === "dark" : matchMedia("(prefers-color-scheme: dark)").matches;
+  const label = () => { btn.textContent = isDark() ? "Light" : "Dark"; };
+  label();
+  btn.addEventListener("click", () => {
+    root.dataset.theme = isDark() ? "light" : "dark";
+    try { localStorage.setItem("theme", root.dataset.theme); } catch (_) {}
+    label(); colours = readColours(); if (still) draw(LOOP - 1000);
+  });
+  matchMedia("(prefers-color-scheme: dark)").addEventListener("change", () => { label(); colours = readColours(); if (still) draw(LOOP - 1000); });
+
+  // Map: a search pulse from the patient, then routes to the five nearest services in rank order.
+  const canvas = document.getElementById("map"), ctx = canvas.getContext("2d"), readout = document.getElementById("readout");
+  const still = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const LOOP = 9000, PULSE = 2200, ROUTE_START = 2400, ROUTE_EACH = 650, TOP = 5;
+  let W = 0, H = 0, colours, services = [], hills = [], areas = [], patient;
+
+  function readColours() {
+    const s = getComputedStyle(root), v = n => s.getPropertyValue(n).trim();
+    return { ink: v("--ink"), ink2: v("--ink-2"), rule: v("--rule"), route: v("--route"), soft: v("--route-soft"), contour: v("--contour"), water: v("--water"), sheet: v("--sheet") };
+  }
+  colours = readColours();
+
+  // Seeded random so the layout is the same on every visit.
+  let seed = 7;
+  const rnd = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
+
+  function layout() {
+    const r = canvas.getBoundingClientRect(), dpr = Math.min(window.devicePixelRatio || 1, 2);
+    W = r.width; H = r.height;
+    canvas.width = Math.round(W * dpr); canvas.height = Math.round(H * dpr);
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    seed = 7;
+    patient = { x: W * .46, y: H * .54 };
+    hills = Array.from({ length: 3 }, () => ({ x: rnd() * W, y: rnd() * H, a: rnd() * 6, b: rnd() * 6 }));
+    const unit = Math.min(W, H);
+    areas = [
+      poly(W * .40, H * .48, unit * .36, 7, 1.1),
+      poly(W * .62, H * .60, unit * .30, 6, 2.4),
+    ];
+    services = [];
+    for (let i = 0; i < 16; i++) {
+      const ang = rnd() * Math.PI * 2, dist = unit * (.1 + rnd() * .42);
+      const x = patient.x + Math.cos(ang) * dist, y = patient.y + Math.sin(ang) * dist;
+      if (x < 18 || x > W - 18 || y < 40 || y > H - 44) continue;
+      services.push({ x, y, d: Math.hypot(x - patient.x, y - patient.y), bend: rnd() > .5 });
+    }
+    services.sort((a, b) => a.d - b.d);
+    services.pxPerMile = unit * .045;
+  }
+  function poly(cx, cy, r, n, phase) {
+    return Array.from({ length: n }, (_, i) => {
+      const a = phase + i / n * Math.PI * 2, k = .78 + ((i * 37) % 10) / 30;
+      return { x: cx + Math.cos(a) * r * k, y: cy + Math.sin(a) * r * k };
+    });
+  }
+
+  function drawBase() {
+    ctx.clearRect(0, 0, W, H);
+    // contours
+    ctx.lineWidth = 1; ctx.strokeStyle = colours.contour; ctx.globalAlpha = .5;
+    for (const h of hills) for (let k = 1; k <= 7; k++) {
+      ctx.beginPath();
+      for (let t = 0; t <= 64; t++) {
+        const th = t / 64 * Math.PI * 2, rr = k * 26 * (1 + .1 * Math.sin(3 * th + h.a) + .06 * Math.sin(5 * th + h.b));
+        const x = h.x + Math.cos(th) * rr, y = h.y + Math.sin(th) * rr * .8;
+        t ? ctx.lineTo(x, y) : ctx.moveTo(x, y);
+      }
+      ctx.stroke();
+    }
+    // a river
+    ctx.globalAlpha = .7; ctx.strokeStyle = colours.water; ctx.lineWidth = 3;
+    ctx.beginPath(); ctx.moveTo(-10, H * .2);
+    ctx.bezierCurveTo(W * .3, H * .1, W * .2, H * .42, W * .55, H * .32);
+    ctx.bezierCurveTo(W * .8, H * .24, W * .85, H * .1, W + 10, H * .14);
+    ctx.stroke();
+    // overlapping commissioning areas
+    ctx.globalAlpha = 1; ctx.lineWidth = 1.2; ctx.setLineDash([5, 5]); ctx.strokeStyle = colours.ink2;
+    for (const a of areas) { ctx.beginPath(); a.forEach((p, i) => i ? ctx.lineTo(p.x, p.y) : ctx.moveTo(p.x, p.y)); ctx.closePath(); ctx.stroke(); }
+    ctx.setLineDash([]);
+  }
+
+  function route(s, progress) {
+    // A road-like path: one leg along x, one along y, drawn up to `progress`.
+    const mid = s.bend ? { x: s.x, y: patient.y } : { x: patient.x, y: s.y };
+    const l1 = Math.hypot(mid.x - patient.x, mid.y - patient.y), l2 = Math.hypot(s.x - mid.x, s.y - mid.y);
+    let len = (l1 + l2) * progress;
+    ctx.beginPath(); ctx.moveTo(patient.x, patient.y);
+    if (len <= l1) { const f = l1 ? len / l1 : 1; ctx.lineTo(patient.x + (mid.x - patient.x) * f, patient.y + (mid.y - patient.y) * f); }
+    else { ctx.lineTo(mid.x, mid.y); const f = l2 ? (len - l1) / l2 : 1; ctx.lineTo(mid.x + (s.x - mid.x) * f, mid.y + (s.y - mid.y) * f); }
+    ctx.stroke();
+    return (l1 + l2) / services.pxPerMile;
+  }
+
+  function draw(t) {
+    drawBase();
+    const maxR = Math.hypot(W, H) * .6;
+    const pulseR = Math.min(1, t / PULSE) * maxR;
+    // pulse
+    if (t < PULSE + 400) {
+      ctx.globalAlpha = Math.max(0, 1 - t / (PULSE + 400));
+      ctx.fillStyle = colours.soft; ctx.beginPath(); ctx.arc(patient.x, patient.y, pulseR, 0, Math.PI * 2); ctx.fill();
+      ctx.strokeStyle = colours.route; ctx.lineWidth = 1.5; ctx.stroke();
+      ctx.globalAlpha = 1;
+    }
+    // routes
+    let returned = 0;
+    ctx.lineWidth = 3; ctx.strokeStyle = colours.route; ctx.lineJoin = "round"; ctx.lineCap = "round";
+    const fade = t > LOOP - 900 ? Math.max(0, (LOOP - t) / 900) : 1;
+    ctx.globalAlpha = fade;
+    services.slice(0, TOP).forEach((s, i) => {
+      const start = ROUTE_START + i * ROUTE_EACH, p = Math.max(0, Math.min(1, (t - start) / (ROUTE_EACH * .9)));
+      if (p <= 0) return;
+      const miles = route(s, p);
+      if (p === 1) {
+        returned++;
+        ctx.font = "500 11px " + getComputedStyle(root).getPropertyValue("--f-mono");
+        const label = `#${i + 1} · ${miles.toFixed(1)} mi`, w = ctx.measureText(label).width + 12;
+        let lx = s.x + 10, ly = s.y - 22;
+        if (lx + w > W - 6) lx = s.x - w - 10;
+        if (ly < 34) ly = s.y + 10;
+        ctx.fillStyle = colours.sheet; ctx.globalAlpha = .92 * fade; ctx.fillRect(lx, ly, w, 18);
+        ctx.globalAlpha = fade; ctx.fillStyle = colours.route; ctx.fillText(label, lx + 6, ly + 13);
+      }
+    });
+    ctx.globalAlpha = 1;
+    // service dots: revealed as the pulse reaches them
+    services.forEach((s, i) => {
+      const seen = s.d <= pulseR || still;
+      ctx.beginPath(); ctx.arc(s.x, s.y, i < TOP && returned > i ? 6 : 4, 0, Math.PI * 2);
+      ctx.fillStyle = seen ? (i < TOP && returned > i ? colours.route : colours.ink) : colours.rule;
+      ctx.fill();
+      if (i < TOP && returned > i) { ctx.strokeStyle = colours.sheet; ctx.lineWidth = 2; ctx.stroke(); }
+    });
+    // patient
+    ctx.beginPath(); ctx.arc(patient.x, patient.y, 8, 0, Math.PI * 2);
+    ctx.fillStyle = colours.ink; ctx.fill(); ctx.strokeStyle = colours.sheet; ctx.lineWidth = 3; ctx.stroke();
+    readout.textContent = `${returned} of ${TOP} returned`;
+  }
+
+  let start = performance.now();
+  function frame(now) { draw((now - start) % LOOP); requestAnimationFrame(frame); }
+  layout();
+  if (still) draw(LOOP - 1000); else requestAnimationFrame(frame);
+  let rt; addEventListener("resize", () => { clearTimeout(rt); rt = setTimeout(() => { layout(); if (still) draw(LOOP - 1000); }, 120); });
+})();
+</script>
+</body>
+</html>
